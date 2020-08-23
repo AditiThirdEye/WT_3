@@ -4,9 +4,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 </head>
 <body>
-    <p>
-        <input type="button" value="Fill SELECT Dropdown List with JSON" id="bt" />
-    </p>
 
     <select id="sel">
         <option value="">-- Select --</option>
@@ -17,7 +14,6 @@
 
 <script>
     $(document).ready(function () {
-        $('#bt').click(function () {
             
             var url = "https://www.encodedna.com/library/sample.json";
 
@@ -26,7 +22,6 @@
                     // APPEND OR INSERT DATA TO SELECT ELEMENT.
                     $('#sel').append('<option value="' + value.ID + '">' + value.Name + '</option>');
                 });
-            });
         });
 
         // SHOW SELECTED VALUE.
