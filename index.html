@@ -1,44 +1,37 @@
 <html>
 <head>
-    <title>Bind SELECT Element with JSON using JavaScript</title>
+    <title>Bind SELECT Dropdown with JSON using JavaScript</title>
 </head>
-<body style="font:14px Calibri;">
-    <p>This SELECT Dropdown list is filed using JSON data from an external file!</p>
+<body>
+    <p>
+        <input type="button" 
+            onclick="populateSelect()" 
+                value="Click to Populate SELECT with JSON" />
+    </p>
 
+    <!--The SELECT element.-->
     <select id="sel" onchange="show(this)">
         <option value="">-- Select --</option>
     </select>
 
     <p id="msg"></p>
 </body>
-
+    
 <script>
-    window.onload = populateSelect();
-
     function populateSelect() {
+        // THE JSON ARRAY.
+        var birds = [
+            {"ID": "001", "Bird_Name": "Eurasian Collared-Dove"},
+            {"ID": "002", "Bird_Name": "Bald Eagle"},
+            {"ID": "003", "Bird_Name": "Cooper's Hawk"},
+        ];
 
-        // CREATE AN XMLHttpRequest OBJECT, WITH GET METHOD.
-        var xhr = new XMLHttpRequest(), 
-            method = 'GET',
-            overrideMimeType = 'application/json',
-            url = ' https://davids-restaurant.herokuapp.com/menu_items.json';        // ADD THE URL OF THE FILE.
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                
-                // PARSE JSON DATA.
-                var birds = JSON.parse(xhr.responseText);
-
-                var ele = document.getElementById('sel');
-                for (var i = 0; i < birds.length; i++) {
-                    // BIND DATA TO <select> ELEMENT.
-                    ele.innerHTML = ele.innerHTML +
-                        '<option value="' + birds[i].ID + '">' + birds[i].Name + '</option>';
-                }
-            }
-        };
-        xhr.open(method, url, true);
-        xhr.send();
+        var ele = document.getElementById('sel');
+        for (var i = 0; i < birds.length; i++) {
+            // POPULATE SELECT ELEMENT WITH JSON.
+            ele.innerHTML = ele.innerHTML +
+                '<option value="' + birds[i]['ID'] + '">' + birds[i]['Bird_Name'] + '</option>';
+        }
     }
 
     function show(ele) {
