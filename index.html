@@ -21,7 +21,7 @@
         var xhr = new XMLHttpRequest(), 
             method = 'GET',
             overrideMimeType = 'application/json',
-            url = '../../library/sample.json';        // ADD THE URL OF THE FILE.
+            url = ' https://davids-restaurant.herokuapp.com/menu_items.json';        // ADD THE URL OF THE FILE.
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
