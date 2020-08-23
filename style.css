@@ -29,7 +29,11 @@ body {
 }
 
 .main {
+    margin: 20px;
+    margin-top: 35px;
     text-align: center;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
 }
 
 .main h1 {
